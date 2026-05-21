@@ -1,0 +1,47 @@
+services:
+  note:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: .
+        target: /chat
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALGORITHM=${ALGORITHM}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+    networks:
+      - app-network  
+
+  db:
+    image: postgres:18
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USERNAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    ports:
+      - "5433:5432"
+    networks:
+      - app-network 
+volumes:
+  postgres_data:
+networks:
+  app-network:
+    driver: bridge
+           
+
+
+
+
+
+
