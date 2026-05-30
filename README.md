@@ -1,0 +1,52 @@
+# chat-backend
+
+---
+
+A real-time chat API. Think mini WhatsApp — but just the backend, for now.
+
+---
+
+## What it does
+
+Sign up, log in, create rooms for different groups of people — your gaming friends, your dev colleagues, whoever — and chat with them in real time. Messages broadcast instantly to everyone in the room and get saved to the database. No refresh needed.
+
+---
+
+## Tech Stack
+
+FastAPI · PostgreSQL · SQLAlchemy 2.0 · WebSockets · Docker · Alembic · JWT Auth · bcrypt · GitHub Actions · Render
+
+---
+
+## Features
+
+- Real-time messaging via WebSockets with per-room connection management
+- JWT authentication with protected routes
+- Full CRUD for users, rooms, and messages
+- Query parameters — filter, limit, skip, search
+- Alembic migrations for schema versioning
+- 19 pytest tests with a dedicated test database
+- CI/CD — GitHub Actions runs tests, builds Docker image, pushes to DockerHub, deploys to Render automatically
+- Live on Render
+
+---
+
+## Run it locally
+
+```bash
+docker-compose up --build
+```
+
+---
+
+## Live API
+
+https://chat-backend-latest-axii.onrender.com
+
+Hit `/docs` for Swagger UI — FastAPI's built-in interactive API explorer.
+
+---
+
+## What's next
+
+A frontend. Real users. Something people actually use.
