@@ -70,3 +70,6 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+      - name: deploy to render
+        run: curl "${{ secrets.RENDER_DEPLOY_HOOK }}"  
