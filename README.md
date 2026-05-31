@@ -15,7 +15,7 @@ Sign up, log in, create rooms for different groups of people — your gaming fri
 ## Tech Stack
 
 FastAPI · PostgreSQL · SQLAlchemy 2.0 · WebSockets · Docker · Alembic · JWT Auth · bcrypt · GitHub Actions · Render
-
+NGINX 
 ---
 
 ## Features
@@ -26,6 +26,7 @@ FastAPI · PostgreSQL · SQLAlchemy 2.0 · WebSockets · Docker · Alembic · JW
 - Query parameters — filter, limit, skip, search
 - Alembic migrations for schema versioning
 - 19 pytest tests with a dedicated test database
+- NGINX reverse proxy — single controlled entry point, app port never exposed directly
 - CI/CD — GitHub Actions runs tests, builds Docker image, pushes to DockerHub, deploys to Render automatically
 - Live on Render
 
@@ -49,4 +50,4 @@ Hit `/docs` for Swagger UI — FastAPI's built-in interactive API explorer.
 
 ## What's next
 
-A frontend. Real users. Something people actually use.
+Redis pub/sub for WebSocket scaling. Then a frontend. Real users. Something people actually use.
