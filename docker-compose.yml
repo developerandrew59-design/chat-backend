@@ -1,8 +1,7 @@
 services:
   note:
     build: .
-    ports:
-      - "8000:8000"
+    
     volumes:
       - type: bind
         source: .
@@ -33,11 +32,24 @@ services:
       - "5433:5432"
     networks:
       - app-network 
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+    
+    depends_on:
+      - note
+    networks:
+      - app-network     
 volumes:
   postgres_data:
 networks:
   app-network:
     driver: bridge
+
+     
            
 
 
