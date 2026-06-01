@@ -42,7 +42,11 @@ services:
     depends_on:
       - note
     networks:
-      - app-network     
+      - app-network 
+  redis:
+    image: redis:7
+    networks:
+      - app-network        
 volumes:
   postgres_data:
 networks:
