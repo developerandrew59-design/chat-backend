@@ -14,8 +14,8 @@ Sign up, log in, create rooms for different groups of people — your gaming fri
 
 ## Tech Stack
 
-FastAPI · PostgreSQL · SQLAlchemy 2.0 · WebSockets · Docker · Alembic · JWT Auth · bcrypt · GitHub Actions · Render
-NGINX 
+FastAPI · PostgreSQL · SQLAlchemy 2.0 · WebSockets · Docker · Alembic · JWT Auth · bcrypt · GitHub Actions · Render ·
+NGINX · Redis 
 ---
 
 ## Features
@@ -27,8 +27,10 @@ NGINX
 - Alembic migrations for schema versioning
 - 19 pytest tests with a dedicated test database
 - NGINX reverse proxy — single controlled entry point, app port never exposed directly
+- Redis for faster message broadcasting and container connection
 - CI/CD — GitHub Actions runs tests, builds Docker image, pushes to DockerHub, deploys to Render automatically
 - Live on Render
+  
 
 ---
 
