@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 from Oauth2 import verify_acess_token
 import models
+import asyncio
 
 router=APIRouter(
     prefix="/ws",
@@ -30,6 +31,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: int,token: str,db:Se
             db.commit()
                         
             await manager.broadcast(data,room_id)
+            asyncio.create_task(manager.listen(room_id))
     except WebSocketDisconnect:
         await manager.disconnect(websocket,room_id)
 
