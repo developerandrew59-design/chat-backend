@@ -27,7 +27,7 @@ NGINX · Redis
 - Alembic migrations for schema versioning
 - 19 pytest tests with a dedicated test database
 - NGINX reverse proxy — single controlled entry point, app port never exposed directly
-- Redis for faster message broadcasting and container connection
+- Redis pub/sub for WebSocket scaling — messages broadcast across multiple server instances, not just local connections
 - CI/CD — GitHub Actions runs tests, builds Docker image, pushes to DockerHub, deploys to Render automatically
 - Live on Render
   
@@ -52,4 +52,4 @@ Hit `/docs` for Swagger UI — FastAPI's built-in interactive API explorer.
 
 ## What's next
 
-Redis pub/sub for WebSocket scaling. Then a frontend. Real users. Something people actually use.
+Structured logging and observability. Then a frontend. Real users. Something people actually use.
