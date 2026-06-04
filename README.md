@@ -2,7 +2,7 @@
 
 ---
 
-A real-time chat API. Think mini WhatsApp — but just the backend, for now.
+A real-time chat API. Think mini WhatsApp.
 
 ---
 
@@ -52,4 +52,4 @@ Hit `/docs` for Swagger UI — FastAPI's built-in interactive API explorer.
 
 ## What's next
 
-Structured logging and observability. Then a frontend. Real users. Something people actually use.
+Structured logging and observability. Then engineering tradeoffs, failure cases, and scaling decisions.
