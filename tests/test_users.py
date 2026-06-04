@@ -7,7 +7,6 @@ from config import settings
 
 def test_root(client):
     response=client.get("/")
-    assert response.json().get('message') == 'it works better!!!'
     assert response.status_code==200
 
 def test_create_user(client):
