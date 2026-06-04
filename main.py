@@ -15,4 +15,4 @@ app.include_router(websocket_endpoint.router)
 
 @app.get("/")
 def get_root():
-    return FileResponse("static/chat-frontend.html")
+    return FileResponse("chat-frontend.html")
