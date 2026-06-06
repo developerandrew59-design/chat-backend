@@ -5,6 +5,9 @@ from database import get_db
 from Oauth2 import verify_acess_token
 import models
 import asyncio
+import logging
+
+logger=logging.getLogger(__name__)
 
 router=APIRouter(
     prefix="/ws",
@@ -22,6 +25,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: int,token: str,db:Se
     token_data = verify_acess_token(token, credentials_exception)
 
     await manager.connect(websocket,room_id)
+    logger.info(f"User with id {token_data.id} is connected to room {room_id}")
 
     try:
         while True:
@@ -29,11 +33,13 @@ async def websocket_endpoint(websocket: WebSocket, room_id: int,token: str,db:Se
             save_message=models.Message(message=data,room_id=room_id,account_id=token_data.id)
             db.add(save_message)
             db.commit()
-                        
+            logger.info(f"User with id {token_data.id} just got his/her message broadcasted")            
             await manager.broadcast(data,room_id)
+            
             asyncio.create_task(manager.listen(room_id))
     except WebSocketDisconnect:
         await manager.disconnect(websocket,room_id)
+        logger.info(f"User with id {token_data.id} just got disconnected from room with id {room_id}")
 
 
     
