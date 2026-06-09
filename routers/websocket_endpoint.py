@@ -6,6 +6,7 @@ from Oauth2 import verify_acess_token
 import models
 import asyncio
 import logging
+import json
 
 logger=logging.getLogger(__name__)
 
@@ -30,12 +31,15 @@ async def websocket_endpoint(websocket: WebSocket, room_id: int,token: str,db:Se
 
     try:
         while True:
+            
             data=await websocket.receive_text()
             save_message=models.Message(message=data,room_id=room_id,account_id=token_data.id)
             db.add(save_message)
             db.commit()
-            logger.info(f"User with id {token_data.id} just got his/her message broadcasted")            
-            await manager.broadcast(data,room_id)
+            logger.info(f"User with id {token_data.id} just got his/her message broadcasted")  
+            payload=json.dumps({"message":data,
+                               "account_id":token_data.id})          
+            await manager.broadcast(payload,room_id)
             
             
     except WebSocketDisconnect:

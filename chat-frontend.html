@@ -1029,11 +1029,13 @@ function connectWS(roomId) {
 
     let msgText;
     try {
-      const parsed = JSON.parse(event.data);
-      msgText = parsed.message || event.data;
-    } catch {
-      msgText = event.data;
-    }
+  const parsed = JSON.parse(event.data);
+  if (parsed.account_id === userId) return;
+  msgText = parsed.message || event.data;
+} catch {
+  msgText = event.data;
+}
+  
 
     const group = document.createElement('div');
     group.classList.add('msg-group');
