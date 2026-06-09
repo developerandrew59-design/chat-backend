@@ -8,6 +8,7 @@ services:
         target: /chat
     depends_on:
       - db
+      - redis
     environment:
       - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
       - DATABASE_PORT=${DATABASE_PORT}
