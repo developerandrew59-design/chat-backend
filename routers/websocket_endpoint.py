@@ -25,6 +25,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: int,token: str,db:Se
     token_data = verify_acess_token(token, credentials_exception)
 
     await manager.connect(websocket,room_id)
+    asyncio.create_task(manager.listen(room_id))
     logger.info(f"User with id {token_data.id} is connected to room {room_id}")
 
     try:
@@ -36,7 +37,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: int,token: str,db:Se
             logger.info(f"User with id {token_data.id} just got his/her message broadcasted")            
             await manager.broadcast(data,room_id)
             
-            asyncio.create_task(manager.listen(room_id))
+            
     except WebSocketDisconnect:
         await manager.disconnect(websocket,room_id)
         logger.info(f"User with id {token_data.id} just got disconnected from room with id {room_id}")
