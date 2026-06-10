@@ -28,6 +28,8 @@ NGINX · Redis
 - 19 pytest tests with a dedicated test database
 - NGINX reverse proxy — single controlled entry point, app port never exposed directly
 - Redis pub/sub for WebSocket scaling — messages broadcast across multiple server instances, not just local connections
+- Redis fallback — app stays live if Redis goes down, falls back to direct broadcast automatically
+- Structured JSON logging and observability — request tracing, user activity, and error tracking across all routers and WebSocket connections
 - CI/CD — GitHub Actions runs tests, builds Docker image, pushes to DockerHub, deploys to Render automatically
 - Live on Render
   
@@ -52,4 +54,4 @@ Hit `/docs` for Swagger UI — FastAPI's built-in interactive API explorer.
 
 ## What's next
 
-Structured logging and observability. Then engineering tradeoffs, failure cases, and scaling decisions.
+Next: engineering tradeoffs, failure cases, and scaling decisions.
