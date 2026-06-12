@@ -52,6 +52,6 @@ Hit `/docs` for Swagger UI — FastAPI's built-in interactive API explorer.
 
 ---
 
-## What's next
+## Next project
 
-Next: engineering tradeoffs, failure cases, and scaling decisions.
+Debate — a structured argument and discussion platform.
